@@ -58,7 +58,16 @@ keys[e.key]=true;
 document.addEventListener("keyup",(e)=>{
 keys[e.key]=false;
 });
+const stars = [];
 
+for(let i = 0; i < 120; i++){
+    stars.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        size: Math.random() * 2 + 1,
+        speed: Math.random() * 2 + 1
+    });
+}
 function update(){
 
 if(keys["ArrowLeft"] && ship.x>0){
@@ -70,7 +79,33 @@ ship.x+=ship.speed;
 }
 
 }
+function drawStars(){
 
+    ctx.fillStyle = "white";
+
+    for(let star of stars){
+
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.size, 0, Math.PI*2);
+        ctx.fill();
+
+        star.y += star.speed;
+
+        if(star.y > canvas.height){
+            star.y = 0;
+            star.x = Math.random()*canvas.width;
+        }
+    }
+
+}function drawMoon(){
+
+    ctx.beginPath();
+    ctx.arc(370,120,70,0,Math.PI*2);
+
+    ctx.fillStyle="#dbeafe";
+    ctx.fill();
+
+}
 function drawShip(){
 
 ctx.fillStyle="#00d4ff";
@@ -95,7 +130,8 @@ ctx.fillRect(ship.x+15,ship.y+60,10,15);
 function game(){
 
 ctx.clearRect(0,0,canvas.width,canvas.height);
-
+drawStars();
+drawMoon();
 update();
 
 drawShip();
