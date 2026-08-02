@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moon Runner | Moon Industries</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+background:black;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+overflow:hidden;
+font-family:Arial,sans-serif;
+}
+
+canvas{
+background:linear-gradient(#020111,#000814);
+border:2px solid #3b82f6;
+border-radius:10px;
+box-shadow:0 0 25px rgba(59,130,246,.5);
+}
+</style>
+
+</head>
+
+<body>
+
+<canvas id="game" width="480" height="800"></canvas>
+
+<script>
+
+const canvas=document.getElementById("game");
+const ctx=canvas.getContext("2d");
+
+let ship={
+x:220,
+y:700,
+width:40,
+height:60,
+speed:6
+};
+
+const keys={};
+
+document.addEventListener("keydown",(e)=>{
+keys[e.key]=true;
+});
+
+document.addEventListener("keyup",(e)=>{
+keys[e.key]=false;
+});
+
+function update(){
+
+if(keys["ArrowLeft"] && ship.x>0){
+ship.x-=ship.speed;
+}
+
+if(keys["ArrowRight"] && ship.x<canvas.width-ship.width){
+ship.x+=ship.speed;
+}
+
+}
+
+function drawShip(){
+
+ctx.fillStyle="#00d4ff";
+
+ctx.beginPath();
+
+ctx.moveTo(ship.x+20,ship.y);
+
+ctx.lineTo(ship.x,ship.y+60);
+
+ctx.lineTo(ship.x+40,ship.y+60);
+
+ctx.closePath();
+
+ctx.fill();
+
+ctx.fillStyle="#3b82f6";
+ctx.fillRect(ship.x+15,ship.y+60,10,15);
+
+}
+
+function game(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+update();
+
+drawShip();
+
+requestAnimationFrame(game);
+
+}
+
+game();
+
+</script>
+
+</body>
+</html>
