@@ -83,23 +83,24 @@ margin:auto;
 line-height:1.7;
 }
 
+
 .btn{
 display:inline-block;
 margin-top:35px;
 padding:15px 35px;
-border-radius:35px;
-background:#3b82f6;
+border-radius:40px;
+background:linear-gradient(90deg,#2563eb,#60a5fa);
 color:white;
 text-decoration:none;
 font-weight:bold;
-transition:.3s;
+transition:.35s;
+box-shadow:0 0 15px rgba(59,130,246,.45);
 }
 
 .btn:hover{
-transform:scale(1.05);
-background:#2563eb;
+transform:translateY(-4px) scale(1.05);
+box-shadow:0 0 30px rgba(59,130,246,.8);
 }
-
 section{
 padding:90px 10%;
 }
@@ -158,6 +159,29 @@ nav ul{
 flex-wrap:wrap;
 justify-content:center;
 }
+}.logo{
+font-size:28px;
+font-weight:bold;
+letter-spacing:2px;
+color:white;
+text-shadow:
+0 0 10px #3b82f6,
+0 0 20px #3b82f6,
+0 0 40px #3b82f6;
+}footer{
+    background:#000;
+    padding:60px 20px;
+    text-align:center;
+    border-top:1px solid #222;
+}
+
+footer h2{
+    margin-bottom:15px;
+}
+
+footer p{
+    color:#999;
+    margin-top:10px;
 }
 </style>
 
@@ -376,15 +400,15 @@ Contact Us
 
 <footer style="text-align:center;padding:40px 20px;background:#000;border-top:1px solid #222;">
 
-<h3>🌙 MOON INDUSTRIES</h3>
+<footer>
 
-<p style="margin-top:15px;color:#bbb;">
-Engineering Tomorrow. Creating the Future.
-</p>
+<h2>🌙 MOON INDUSTRIES</h2>
 
-<p style="margin-top:20px;color:#666;">
-© 2026 Moon Industries. All rights reserved.
-</p>
+<p>Engineering Tomorrow • Building the Future</p>
+
+<p>© 2026 Moon Industries. All rights reserved.</p>
+
+</footer>
 
 </footer>
 
